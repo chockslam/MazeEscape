@@ -12,20 +12,17 @@ public class InputHandle
 
     public void HandleInput()
     {
-#if UNITY_EDITOR && UNITY_ANDROID
-        HandleKeyboardInput();
-#endif
         HandleTouchInput();
     }
 
-    public void HandleKeyboardInput()
-    {
-        float horizontal = UnityEngine.Input.GetAxisRaw("Horizontal");
-        float vertical = UnityEngine.Input.GetAxisRaw("Vertical");
+    //public void HandleKeyboardInput()
+    //{
+    //    float horizontal = UnityEngine.Input.GetAxisRaw("Horizontal");
+    //    float vertical = UnityEngine.Input.GetAxisRaw("Vertical");
 
-        MovementDirection = new UnityEngine.Vector2(horizontal, vertical);
-        IsInputActive = MovementDirection.magnitude > 0.01f;
-    }
+    //    MovementDirection = new UnityEngine.Vector2(horizontal, vertical);
+    //    IsInputActive = MovementDirection.magnitude > 0.01f;
+    //}
 
     public void HandleTouchInput()
     {
