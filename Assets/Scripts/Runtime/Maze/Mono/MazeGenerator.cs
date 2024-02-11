@@ -89,7 +89,6 @@ public class MazeGenerator : MonoBehaviour
                 Cell cell = obj.GetComponent<Cell>();
                 if (cell != null)
                 {
-                    cell.OnObjectSpawn(); // Make sure the cell is in a clean state
                     m_grid[x, z] = cell;
                 }
                 else

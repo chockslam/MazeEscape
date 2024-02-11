@@ -264,7 +264,7 @@ public class Enemy : Character
 
     void DrawFOV()
     {
-        viewPoints.Clear(); // Clear the existing list instead of creating a new one
+        viewPoints.Clear();
 
         float stepAngleSize = aiSettings.fieldOfViewAngle / fovRayCount;
         for (int i = 0; i <= fovRayCount; i++)
@@ -274,7 +274,7 @@ public class Enemy : Character
             viewPoints.Add(viewCast.point);
         }
 
-        UpdateMeshWithViewPoints(viewPoints); // Refactor mesh updating into a separate method
+        UpdateMeshWithViewPoints(viewPoints);
     }
 
     void UpdateMeshWithViewPoints(List<Vector3> viewPoints)

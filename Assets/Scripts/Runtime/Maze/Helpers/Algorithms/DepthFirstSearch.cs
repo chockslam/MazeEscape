@@ -63,6 +63,6 @@ public class DepthFirstSearch : MazeAlgorithm
             return unvisitedNeighbors[randomIndex];
         }
 
-        return null; // No unvisited neighbors
+        return null; 
     }
 }

@@ -17,8 +17,8 @@ public sealed class PrimsAlgorithm : MazeAlgorithm
 
         while (frontierCells.Count > 0)
         {
-            Cell nextCell = ChooseFrontierCell(frontierCells); // Implement selection logic
-            Cell adjacentCell = GetVisitedNeighbor(nextCell); // Find an already visited neighbor
+            Cell nextCell = ChooseFrontierCell(frontierCells);
+            Cell adjacentCell = GetVisitedNeighbor(nextCell); 
             RemoveWallBetween(adjacentCell, nextCell);
             nextCell.Visit();
             AddFrontierCells(nextCell, frontierCells);
@@ -31,7 +31,7 @@ public sealed class PrimsAlgorithm : MazeAlgorithm
         if (frontierCells.Count == 0) return null;
         int index = UnityEngine.Random.Range(0, frontierCells.Count);
         Cell chosenCell = frontierCells[index];
-        frontierCells.RemoveAt(index); // Remove the chosen cell from the frontier list
+        frontierCells.RemoveAt(index);
         return chosenCell;
     }
 
@@ -42,7 +42,6 @@ public sealed class PrimsAlgorithm : MazeAlgorithm
 
         List<Cell> visitedNeighbors = new List<Cell>();
 
-        // Check each direction for visited neighbors
         CheckAndAddVisitedNeighbor(x - 1, z, visitedNeighbors); // Left
         CheckAndAddVisitedNeighbor(x + 1, z, visitedNeighbors); // Right
         CheckAndAddVisitedNeighbor(x, z - 1, visitedNeighbors); // Back
@@ -70,7 +69,6 @@ public sealed class PrimsAlgorithm : MazeAlgorithm
         int x = Mathf.RoundToInt(currentCell.transform.position.x);
         int z = Mathf.RoundToInt(currentCell.transform.position.z);
 
-        // Add unvisited neighbors to the frontier list
         AddIfValid(x - 1, z, frontierCells); // Left
         AddIfValid(x + 1, z, frontierCells); // Right
         AddIfValid(x, z - 1, frontierCells); // Back
