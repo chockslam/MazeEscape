@@ -8,13 +8,17 @@ public class MazeGeneratorEditor : Editor
     {
         DrawDefaultInspector();
 
-        GameManager GameManager = (GameManager)target;
+        GameManager gameManager = (GameManager)target;
 
         if (Application.isPlaying)
         {
-            if (GUILayout.Button("Regenerate Maze"))
+            if (gameManager.IsLoading)
             {
-                GameManager.RestartLevel();
+                EditorGUILayout.HelpBox("Cannot regenrate while loading", MessageType.Warning);
+            }
+            else if (GUILayout.Button("Regenerate Maze"))
+            {
+                gameManager.RestartLevel();
             }
         }
         else

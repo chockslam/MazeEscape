@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] UIManager uiManager;
     [SerializeField] List<EnemyData> enemiesToSpawn;
 
+    bool isLoading;
+    public bool IsLoading { get => isLoading; }
+
     Player m_player;
     Enemy[] m_enemies;
-
     Observer<GameEvent> m_eventObserver;
 
     void Awake()
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel() 
     {
+        isLoading = true;
         StartCoroutine(RestartLevelCoroutine());
     }
 
@@ -47,10 +50,12 @@ public class GameManager : MonoBehaviour
         SpawnPlayerAtStart();
         SpawnEnemies();
         m_eventObserver.NotifySubscribers(new GameEvent(EventType.GamePlaying, null));
+        isLoading = false;
     }
 
     public void GameStart() 
     {
+        isLoading = true;
         StartCoroutine(GameStartCoroutine());
     }
 
@@ -62,6 +67,7 @@ public class GameManager : MonoBehaviour
         SpawnPlayerAtStart();
         SpawnEnemies();
         m_eventObserver.NotifySubscribers(new GameEvent(EventType.GamePlaying, null));
+        isLoading = false;
     }
 
     void SpawnPlayerAtStart()
