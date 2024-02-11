@@ -15,7 +15,6 @@ public class Enemy : Character
 
     public AStarPathfinding m_pathfinder;
 
-    bool playerDetected;
     bool canDamage = true;
     int m_currentPatrolIndex = 0;
     int pathIndex = 0;
@@ -224,7 +223,6 @@ public class Enemy : Character
             m_currentState = State.Search;
             lastSeenPlayerPosition = m_player.transform.position;
             searchStartTime = Time.time;
-            playerDetected = true;
         }
     }
 

@@ -24,14 +24,12 @@ public class GameManager : MonoBehaviour
         {
             numberOfEnemies += enemyData.number;
         }
-
         m_enemies = new Enemy[numberOfEnemies];
     }
 
     void Start()
     {
         Application.targetFrameRate = 60;
-        QualitySettings.vSyncCount = 0;
         GameStart();
     }
 
@@ -88,9 +86,10 @@ public class GameManager : MonoBehaviour
 
     void SpawnEnemies()
     {
+        uint numberOfEnemies = 0;
         foreach (EnemyData enemyData in enemiesToSpawn) 
         {
-            for (int i = 0; i < enemyData.number; i++)
+            for (int i = 0; i < enemyData.number; ++i)
             {
                 Vector2Int spawnPosition = mazeGenerator.FindRandomSpawnPosition();
                 Vector3 worldPosition = new Vector3(spawnPosition.x, 0, spawnPosition.y);
@@ -105,7 +104,8 @@ public class GameManager : MonoBehaviour
                 enemy.SetEventObserver(m_eventObserver);
                 enemy.SetPlayer(m_player);
                 enemy.SetGrid(mazeGenerator.GetGrid());
-                m_enemies[i] = enemy;
+                m_enemies[numberOfEnemies] = enemy;
+                ++numberOfEnemies;
             }
         }
         
